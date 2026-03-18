@@ -1,0 +1,111 @@
+:root {
+    --white: #fff;
+    --theme-color: #224229;
+    --theme-color-15: #22422926;
+    --theme-color-25: #2242293F;
+    --theme-color-50: #2242297F;
+    --theme-color-75: #224229BF;
+    --hover-color: #224229;
+    --secondary-color: #000000;
+    --text-color: #828787;
+    --text-color-50: #8287877F;
+    --text-color-75: #828787BF;
+    --gray-dark-15: #31323226;
+    --gray-dark-25: #3132323F;
+    --gray-dark-35: #31323259;
+    --gray-dark: #313232;
+    --gray-dark-50: #3132327F;
+    --gray-dark-75: #313232BF;
+    --body-bg-color: #ffffff;
+    --border-color: #e8e8e8;
+    --border-color-50: #e8e8e87F;
+    --header-bg-color: #ffffff;
+    --footer-color: #ffffff;
+    --footer-color-hover: #ffffff;
+    --menu-color: #313232;
+    --menu-hover-color: #313232;
+    --menu-dropdown-bg: #ffffff;
+    --menu-dropdown-color: #828787;
+    --menu-dropdown-hover-color: #224229;
+    --font-family-second: "Libre Baskerville", serif;
+    --heading-font-weight-default: 400;
+    --heading-font-weight-bold: 700;
+    --heading-font-weight-medium: 600;
+    --heading-font-weight-light: 300;
+    --font-size-heading: 30px;
+    --font-family-base: Poppins;
+    --body-font-weight-default: 400;
+    --body-font-weight-bold: 700;
+    --body-font-weight-medium: 500;
+    --body-font-weight-light: 300;
+    --font-size-base: 1px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: url('images/bg2.webp') no-repeat center/cover;
+}
+
+.header {
+    height: 100vh;
+    color: white;
+    /* background: transparent; */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5px;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-bottom: 1px solid white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.menu li {
+    cursor: pointer;
+}
+.icons{
+    margin-right: 25px;
+}
+.icons span {
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.hero h1 {
+    font-size: 50px;
+}
+.hero p{
+    text-transform: uppercase;
+}
+
+.hero button {
+    padding: 10px 20px;
+    background: green;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
