@@ -192,3 +192,178 @@ document.addEventListener("DOMContentLoaded", function() {
         sidebarOverlay.addEventListener('click', closeSidebar);
     }
 });
+
+// tab effect
+let titles = ["📢 Come back!", "⚡ Don't forget this..."];
+let index = 0;
+let interval;
+
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        interval = setInterval(() => {
+            document.title = titles[index % titles.length];
+            index++;
+        }, 500);
+    } else {
+        clearInterval(interval);
+        document.title = "Flasio";
+    }
+});
+
+// sign in section 
+const userBtn = document.getElementById("user-btn");
+const modal = document.getElementById("user-modal");
+const closeBtn = document.getElementById("close-modal");
+
+userBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
+
+// Infinite Scroll for Featured Products Slider
+document.addEventListener("DOMContentLoaded", function() {
+    const productsSlider = document.querySelector('.products-slider');
+    if (!productsSlider) return;
+
+    // Clone elements for infinite scrolling effect
+    const products = Array.from(productsSlider.children);
+    products.forEach(product => {
+        const clone = product.cloneNode(true);
+        productsSlider.appendChild(clone);
+    });
+
+    productsSlider.addEventListener('scroll', () => {
+        const halfScrollWidth = productsSlider.scrollWidth / 2;
+        
+        // If we've scrolled exactly to the end of the original set, loop back transparently
+        if (productsSlider.scrollLeft >= halfScrollWidth - 1) {
+            productsSlider.style.scrollBehavior = 'auto';
+            productsSlider.scrollLeft -= halfScrollWidth;
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    productsSlider.style.scrollBehavior = '';
+                });
+            });
+        }
+    });
+});
+
+// second slider (Responsive Infinite Image Slider)
+const wrapper = document.querySelector('.slider-wrapper');
+const container = document.querySelector(".slider .container");
+const originalImages = document.querySelectorAll(".slider .image");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
+
+if (wrapper && container && originalImages.length > 0) {
+    let inx = 1;
+    let isTransitioning = false;
+    
+    // clone first and last for infinite loop
+    const firstClone = originalImages[0].cloneNode(true);
+    const lastClone = originalImages[originalImages.length - 1].cloneNode(true);
+    
+    firstClone.classList.add('clone');
+    lastClone.classList.add('clone');
+    
+    container.appendChild(firstClone);
+    container.insertBefore(lastClone, container.firstChild);
+    
+    const allImages = document.querySelectorAll(".slider .image");
+    
+    function updateSlider(animate = true) {
+        if (!animate) {
+            container.style.transition = 'none';
+        } else {
+            container.style.transition = 'transform 0.5s ease-in-out';
+        }
+        
+        allImages.forEach((img, index) => {
+            img.classList.remove('active');
+            if (index === inx) {
+                img.classList.add('active');
+            }
+        });
+        
+        const wrapperWidth = wrapper.clientWidth;
+        // Use offsetWidth to get the layout width without transform scaling
+        const itemLayoutWidth = allImages[0].offsetWidth; 
+        
+        // Gap is 20px based on CSS
+        const gap = 20; 
+        
+        // Total offset to the left edge of the current item
+        const offsetLeft = inx * (itemLayoutWidth + gap);
+        
+        // Offset to center the item in the wrapper
+        const centerOffset = (wrapperWidth - itemLayoutWidth) / 2;
+        
+        const translateValue = centerOffset - offsetLeft;
+        container.style.transform = `translateX(${translateValue}px)`;
+    }
+    
+    // Initial setup
+    // Small timeout to ensure CSS has calculated the flex layout widths
+    setTimeout(() => {
+        updateSlider(false);
+    }, 50);
+    
+    // Recalculate on window resize
+    window.addEventListener('resize', () => {
+        updateSlider(false);
+    });
+    
+    next.addEventListener("click", () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        inx++;
+        updateSlider(true);
+        
+        setTimeout(() => {
+            if (inx >= allImages.length - 1) {
+                inx = 1;
+                updateSlider(false);
+            }
+            isTransitioning = false;
+        }, 500); // 500ms matches CSS transition
+    });
+    
+    prev.addEventListener("click", () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        inx--;
+        updateSlider(true);
+        
+        setTimeout(() => {
+            if (inx <= 0) {
+                inx = allImages.length - 2;
+                updateSlider(false);
+            }
+            isTransitioning = false;
+        }, 500); 
+    });
+}
+// back to top button
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.style.display = "flex";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+});
+
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
