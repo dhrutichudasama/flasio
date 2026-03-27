@@ -231,6 +231,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Clone elements for infinite scrolling effect
     const products = Array.from(productsSlider.children);
+
+    // --- NEW: Circular Hover Image Swap Logic ---
+    products.forEach((product, i) => {
+        const productImgContainer = product.querySelector('.product-img');
+        const primaryImg = productImgContainer.querySelector('img');
+        
+        // Add class to primary image
+        primaryImg.classList.add('primary-img');
+
+        // Get the next product (looping)
+        const nextProduct = products[(i + 2) % products.length];
+        const nextImgSrc = nextProduct.querySelector('img').src;
+
+        // Create and add the hover image
+        const hoverImg = document.createElement('img');
+        hoverImg.src = nextImgSrc;
+        hoverImg.classList.add('hover-img');
+        productImgContainer.appendChild(hoverImg);
+    });
+    // --------------------------------------------
+
     products.forEach(product => {
         const clone = product.cloneNode(true);
         productsSlider.appendChild(clone);
