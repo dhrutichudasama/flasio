@@ -251,6 +251,7 @@ ul {
     color: #3f3e3e;
     transition: color 0.2s;
     position: relative;
+    cursor: pointer;
 }
 
 .main-nav ul li a i.ph-caret-down {
@@ -465,6 +466,7 @@ ul {
 }
 .logo img{
     width: 100px;
+    cursor: pointer;
 }
 
 /* Right Actions */
@@ -1505,6 +1507,7 @@ ul {
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.3s ease;
+    z-index: 10; /* Ensure it's above the image stack */
 }
 
 /* show on hover */
@@ -1846,6 +1849,7 @@ ul {
     background: #263E2B;
     color: #F9F6EF;
 }
+
 
 /* footer */
 footer {

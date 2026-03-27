@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* layout */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;   /* 👈 thickness */
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: black;
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+
+        /* wishlist item */
+        .wishlist-item {
+            /* display: flex; */
+            gap: 30px;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .wishlist-item img {
+            width: 250px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .wishlist-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .wishlist-details h3 {
+            font-size: 20px;
+        }
+
+        .rating {
+            color: #999;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .remove-btn {
+            width: fit-content;
+            padding: 8px 15px;
+            border: 1px solid black;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- MAIN -->
+    <div class="main-content">
+        <div class="container">
+
+            <h2>Wishlist</h2>
+
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> / Wishlist
+            </div>
+
+            <hr>
+
+            <!-- ITEM -->
+            <div class="wishlist-item">
+                <img src="../images/product-1.webp" alt="">
+
+                <div class="wishlist-details">
+                    <h3>Jade Succulent</h3>
+                    <div class="rating">★ ★ ★ ☆ ☆</div>
+                    <div class="price">$60.00 - $153.00</div>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <!-- JS -->
+    <script>
+        const BASE_URL = "/flasio/";
+
+        function loadComponent(id, file) {
+            fetch(BASE_URL + file)
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                });
+        }
+
+        loadComponent("header", "header.html");
+        loadComponent("footer", "footer.html");
+    </script>
+
+</body>
+
+</html>
