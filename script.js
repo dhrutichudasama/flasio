@@ -388,3 +388,12 @@ backToTopBtn.addEventListener("click", () => {
         behavior: "smooth"
     });
 });
+
+// footer
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.querySelectorAll(".footer-header").forEach(header => {
+//         header.addEventListener("click", () => {
+//             header.parentElement.classList.toggle("active");
+//         });
+//     });
+// });
