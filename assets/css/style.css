@@ -54,7 +54,7 @@ ul {
 .topbar {
     border-bottom: 1px solid #f1f1f1;
     color: #777;
-    font-size: 15px;
+    font-size: 12px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -1218,7 +1218,12 @@ ul {
     gap: 60px;
     padding: 80px 30px;
 }
-
+.shop-all-products .content {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    text-align: center;
+}
 .shop-all-products .img,
 .shop-all-products .content {
     flex: 1;
@@ -1230,10 +1235,6 @@ ul {
 
 .shop-all-products .img img {
     width: 100%;
-}
-
-.shop-all-products .content center {
-    display: block;
 }
 
 /* Heading */
@@ -1254,7 +1255,7 @@ ul {
 .shop-all-products p {
     color: #666;
     margin-bottom: 30px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 /* Button */
@@ -1263,10 +1264,26 @@ ul {
     background-color: transparent;
     color: #111;
     border: none;
-    border-bottom: 1px solid #111;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
+    position: relative;
+}
+/* bottom line */
+.shop-all-products .shop-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: #111;
+    transition: all 0.3s ease;
+}
+.shop-all-products .shop-btn:hover::after {
+    width: 40%;         
+    left: 50%;     
+    transform: translateX(-50%);
 }
 
 /* Hotspot */
@@ -1422,6 +1439,12 @@ ul {
     transition: all 0.3s ease;
     margin-top: 15px;
 }
+.featured-collection .shop-btn i{
+    margin-left: 5px;
+}
+.featured-collection .shop-btn:hover{
+    animation: shake 0.5s ease;
+}
 
 /* Products */
 .featured-collection .products-slider {
@@ -1499,6 +1522,57 @@ ul {
 
 .featured-collection .product p i.fa-sharp-duotone {
     color: #cccccc;
+}
+
+/* color options */
+.color-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.color {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #000000;
+    transition: transform 0.2s ease;
+}
+/* Tooltip */
+.color::after {
+    content: attr(data-color);
+    position: absolute;
+    bottom: 130%;
+    left: 60%;
+    transform: translateX(-50%);
+    background: #111;
+    color: #fff;
+    padding: 3px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* Tooltip arrow */
+.color::before {
+    content: "";
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #111;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.color:hover::after,
+.color:hover::before {
+    opacity: 1;
 }
 /* product image container */
 .product-img {
@@ -1841,8 +1915,8 @@ ul {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border: none;
     background: #ffffff;
     color: #263E2B;

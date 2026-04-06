@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flasio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,367 +19,15 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="topbar">
-            <div class="container">
-                <div class="topbar-left">
-                    <div class="topbar-item">
-                        <i class="ph ph-map-pin"></i>
-                        <span><a href="#">Find Store</a></span>
-                    </div>
-                    <div class="topbar-separator"></div>
-                    <div class="topbar-item">
-                        <i class="ph ph-envelope-simple"></i>
-                        <span><a href="#">sayhello@demati.com</a></span>
-                    </div>
-                </div>
-                <div class="topbar-right">
-                    <div class="topbar-item currency-dropdown">
-                        <img src="https://flagcdn.com/w20/us.png" alt="US Flag" class="flag-icon">
-                        <span class="currency-text">USD</span>
-                        <i class="ph ph-caret-down"></i>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item" data-currency="USD">USD</div>
-                            <div class="dropdown-item" data-currency="EUR">EUR</div>
-                            <div class="dropdown-item" data-currency="GBP">GBP</div>
-                        </div>
-                    </div>
-                    <div class="topbar-separator"></div>
-                    <div class="topbar-item language-dropdown">
-                        <span class="language-text">English</span>
-                        <i class="ph ph-caret-down"></i>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item" data-language="English">English</div>
-                            <div class="dropdown-item" data-language="Spanish">Spanish</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-header ">
-            <div class="container">
-                <div class="header-left-actions hide-on-desktop">
-                    <div class="mobile-menu-btn" id="open-sidebar">
-                        <i class="ph ph-list"></i>
-                    </div>
-                    <a href="#" class="action-item" id="search-btn-mobile">
-                        <i class="ph ph-magnifying-glass"></i>
-                    </a>
-                </div>
-                <nav class="main-nav">
-                    <ul>
-                        <li class="active has-mega-menu home-menu">
-                            <a href="#">HOME <i class="ph ph-caret-down"></i></a>
-                            <div class="mega-menu">
-                                <div class="mega-menu-grid">
-                                    <a href="index.html" class="mega-menu-item">
-                                        <div class="mega-img-wrapper">
-                                            <img src="images/home-1.webp" onerror="this.src='./images/home-1.webp'"
-                                                alt="Home 1">
-                                        </div>
-                                        <span>Home Modern</span>
-                                    </a>
-                                    <a href="index.html" class="mega-menu-item">
-                                        <div class="mega-img-wrapper">
-                                            <img src="images/home-2.webp" onerror="this.src='./images/home-2.webp'"
-                                                alt="Home 2">
-                                        </div>
-                                        <span>Home Flat</span>
-                                    </a>
-                                    <a href="index.html" class="mega-menu-item">
-                                        <div class="mega-img-wrapper">
-                                            <img src="images/home-3.webp" onerror="this.src='./images/home-3.webp'"
-                                                alt="Home 3">
-                                        </div>
-                                        <span>Home Collection</span>
-                                    </a>
-                                    <a href="index.html" class="mega-menu-item">
-                                        <div class="mega-img-wrapper">
-                                            <img src="images/home-4.webp" onerror="this.src='./images/home-4.webp'"
-                                                alt="Home 4">
-                                        </div>
-                                        <span>Home Classic</span>
-                                    </a>
-                                    <a href="index.html" class="mega-menu-item">
-                                        <div class="mega-img-wrapper">
-                                            <img src="images/home-5.webp" onerror="this.src='./images/home-5.webp'"
-                                                alt="Home 5">
-                                        </div>
-                                        <span>Home Clean</span>
-                                    </a>
-                                    <a href="index.html" class="mega-menu-item">
-                                        <div class="mega-img-wrapper">
-                                            <img src="images/home-6.webp" onerror="this.src='./images/home-6.webp'"
-                                                alt="Home 6">
-                                        </div>
-                                        <span>Home Stylish</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="has-mega-menu shop-menu">
-                            <a href="#">SHOP <i class="ph ph-caret-down"></i></a>
-                            <div class="mega-menu">
-                                <div class="mega-menu-grid shop-grid">
-                                    <div class="menu-column">
-                                        <img src="images/shop1.jpg" alt="shop1">
-                                        <button class="discover-btn">Discover</button>
-                                    </div>
-                                    <div class="menu-column">
-                                        <img src="images/shop2.webp" alt="shop1">
-                                        <button class="discover-btn">Discover</button>
-                                    </div>
-                                    <!-- Column 1 -->
-                                    <div class="menu-column">
-                                        <h4>Layout</h4>
-                                        <a href="#">Standard</a>
-                                        <a href="#">Standard With Banner</a>
-                                        <a href="#">Categories Image 1</a>
-                                        <a href="#">Categories Image 2</a>
-                                        <a href="#">Fullwidth</a>
-                                        <a href="#">List view</a>
-                                        <a href="#">Simple</a>
-                                        <a href="#">Mansonry</a>
-                                        <a href="#">Overlay Header</a>
-                                        <a href="#">Collection List 1</a>
-                                        <a href="#">Collection List 2</a>
-                                        <a href="#">Collection Slider</a>
-                                    </div>
-
-                                    <!-- Column 2 -->
-                                    <div class="menu-column">
-                                        <h4>Filter</h4>
-                                        <a href="#">Collection List 1</a>
-                                        <a href="#">On top</a>
-                                        <a href="#">Dropdown</a>
-                                        <a href="#">Side out</a>
-                                        <a href="#">Drawer</a>
-                                        <a href="#">Sidebar Style 1</a>
-                                        <a href="#">Sidebar Style 2Hot</a>
-                                        <a href="#">Sidebar Style 3</a>
-                                        <a href="#">Sidebar Style 4Hot</a>
-                                        <a href="#">Filter Scroll</a>
-                                    </div>
-
-                                    <!-- Column 3 -->
-                                    <div class="menu-column">
-                                        <h4>Loader & Cart</h4>
-                                        <a href="#">Shop Paggination</a>
-                                        <a href="#">Shop Load more button</a>
-                                        <a href="#">Shop Infinite scrolling</a>
-                                        <a href="#">Cart Dropdown</a>
-                                        <a href="#">Cart Side out</a>
-                                        <a href="#">Cart Page</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="has-mega-menu product-menu">
-                            <a href="#">PRODUCT <i class="ph ph-caret-down"></i></a>
-                            <div class="mega-menu">
-                                <div class="mega-menu-grid product-grid">
-                                    <!-- Column 1 -->
-                                    <div class="menu-column">
-                                        <h4>Product Layout</h4>
-                                        <a href="#">Grid 1 columns</a>
-                                        <a href="#">Grid 2 columns</a>
-                                        <a href="#">Grid modern</a>
-                                        <a href="#">Grid sticky</a>
-                                        <a href="#">Slider full-width</a>
-                                        <a href="#">Bottom Thumbnails</a>
-                                        <a href="#">Left Thumbnails</a>
-                                        <a href="#">Right Thumbnails</a>
-                                        <a href="#">Without Thumbnails</a>
-                                        <a href="#">Left Sidebar</a>
-                                        <a href="#">Right Sidebar</a>
-                                        <a href="#">Group Product</a>
-                                        <a href="#">Tab information</a>
-                                        <a href="#">Collapsible tabs information</a>
-                                        <a href="#">Full Content information</a>
-                                        <a href="#">Vertical information</a>
-                                    </div>
-
-                                    <!-- Column 2 -->
-                                    <div class="menu-column">
-                                        <h4>Featured</h4>
-                                        <a href="#">Pre-order product</a>
-                                        <a href="#">Sticky add to cart</a>
-                                        <a href="#">Video</a>
-                                        <a href="#">3D, AR models</a>
-                                        <a href="#">Product 360</a>
-                                        <a href="#">Countdown Timer</a>
-                                        <a href="#">Frequently Bought Together v1</a>
-                                        <a href="#">Frequently Bought Together v2</a>
-                                        <a href="#">Buy more save more</a>
-                                        <a href="#">Real-time visitors</a>
-                                        <a href="#">Stock countdown</a>
-                                        <a href="#">Back in stock notification</a>
-                                        <a href="#">Dynamic checkout button</a>
-                                        <a href="#">Trust badge</a>
-                                        <a href="#">Delivery information</a>
-                                    </div>
-
-                                    <!-- Column 3 -->
-                                    <div class="menu-column">
-                                        <h4>Product Features</h4>
-                                        <a href="#">Zoom Image</a>
-                                        <a href="#">Product Upsell Features</a>
-                                        <a href="#">Product pickup</a>
-                                        <a href="#">Shipping info</a>
-                                        <a href="#">Ask a Question</a>
-                                        <a href="#">Product Variable Image</a>
-                                        <a href="#">Product Variable Color</a>
-                                        <a href="#">Product Variable Color and Check Box</a>
-                                        <a href="#">Product Variable Dropdown</a>
-                                        <a href="#">Product Variable Color and Dropdown</a>
-                                        <a href="#">Product Variable Box</a>
-                                        <a href="#">Product Variable Check Box</a>
-                                    </div>
-
-                                    <!-- Column 4 -->
-                                    <div class="menu-column">
-                                        <h4>Product Cart</h4>
-                                        <a href="#">Scale hover</a>
-                                        <a href="#">Slider hover</a>
-                                        <a href="#">Fadein hover</a>
-                                        <a href="#">Zoom hover</a>
-                                        <a href="#">Icons on hover</a>
-                                        <a href="#">Icon & add to cart</a>
-                                        <a href="#">Quick view button</a>
-                                        <a href="#">Add to cart button</a>
-                                        <a href="#">Wishlist on the bottom</a>
-                                        <a href="#">Dual Button</a>
-                                        <a href="#">Slider up</a>
-                                        <a href="#">Info on hover</a>
-                                        <a href="#">Quick shop button</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="has-mega-menu blog-menu">
-                            <a href="#">BLOG <i class="ph ph-caret-down"></i></a>
-
-                            <div class="mega-menu">
-                                <div class="mega-menu-grid blog-grid">
-
-                                    <!-- Column 1 (Text) -->
-                                    <div class="menu-column">
-                                        <h4>Blog Layout</h4>
-                                        <a href="#">Blog Standard</a>
-                                        <a href="#">Blog Grid</a>
-                                        <a href="#">Blog Grid Mix</a>
-                                        <a href="#">List</a>
-                                        <a href="#">Post Sidebar</a>
-                                        <a href="#">Post One Column</a>
-                                        <a href="#">Post Prallax Image</a>
-                                        <a href="#">Post Sticky</a>
-                                        <a href="#">Post Simple Title</a>
-                                    </div>
-                                    <!-- Column 2 (Images) -->
-                                    <div class="menu-column blog-images">
-                                        <div class="blog-img">
-                                            <img src="images/blog-1.webp" alt="blog1">
-                                            <p>news</p>
-                                            <p>travaling solo is awasome</p>
-                                        </div>
-                                        <div class="blog-img">
-                                            <img src="images/blog-2.webp" alt="blog2">
-                                            <p>news</p>
-                                            <p>indoor plants are good for health</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="has-mega-menu featured-menu">
-                            <a href="#">FEATURED <i class="ph ph-caret-down"></i></a>
-
-                            <div class="mega-menu">
-                                <div class="mega-menu-grid featured-grid">
-
-                                    <!-- Column 1 -->
-                                    <div class="menu-column">
-                                        <h4>Shop Pages</h4>
-                                        <a href="#">About Us</a>
-                                        <a href="#">Contact Us</a>
-                                        <a href="#">Faqs</a>
-                                        <a href="#">Faqs 2</a>
-                                        <a href="#">Wishlist</a>
-                                        <a href="#">404 Error</a>
-                                    </div>
-
-                                    <!-- Column 2 -->
-                                    <div class="menu-column">
-                                        <h4>Portfolio</h4>
-                                        <a href="#">2 Columns</a>
-                                        <a href="#">3 Columns</a>
-                                        <a href="#">4 Columns</a>
-                                        <a href="#">Masonry LayoutNew</a>
-                                    </div>
-
-                                    <!-- Column 3 -->
-                                    <div class="menu-column">
-                                        <h4>Featured</h4>
-                                        <a href="#">Announcement bar</a>
-                                        <a href="#">Popup Newsletter</a>
-                                        <a href="#">Popup CompareNew</a>
-                                        <a href="#">Cookies law info</a>
-                                        <a href="#">RTL Layout</a>
-                                    </div>
-                                    <!-- Column 4 -->
-                                    <div class="menu-column">
-                                        <h4>Lookbook</h4>
-                                        <a href="#">Lookbook Single</a>
-                                        <a href="#">Lookbook In Page</a>
-                                        <a href="#">Lookbook Simple</a>
-                                    </div>
-                                    <!-- Column 5 -->
-                                    <div class="menu-column">
-                                        <h4>Instagram Shop</h4>
-                                        <a href="#">Instagram Shop Slider</a>
-                                        <a href="#">Instagram Shop Grid Modern</a>
-                                        <a href="#">Instagram Shop in Page</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="logo">
-                    <a href="index.html"><img src="images/logonew.png" onerror="this.src='./images/logo.webp'"
-                            alt="logo"></a>
-                </div>
-
-                <div class="header-actions">
-                    <a href="#" class="action-item hide-on-mobile" id="search-btn">
-                        <i class="ph ph-magnifying-glass"></i>
-                    </a>
-                    <a href="#" class="action-item hide-on-mobile" id="user-btn">
-                        <i class="ph ph-user"></i>
-                    </a>
-                    <a href="pages/whishlist.html" class="action-item badge-item">
-                        <i class="ph ph-heart"></i>
-                        <span class="badge">0</span>
-                    </a>
-                    <a href="#" class="action-item badge-item">
-                        <i class="ph ph-tote"></i>
-                        <span class="badge">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div id="header"></div>
 
     <section class="banner-section">
         <div class="banner-slider">
 
             <div class="slide active">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="../flasio/images/bg1-2.jpg">
-                    <img src="../flasio/images/bg1.webp">
+                    <source media="(max-width: 768px)" srcset="assets/images/bg1-2.jpg">
+                    <img src="assets/images/bg1.webp">
                 </picture>
                 <div class="slide-content">
                     <h1>Make green <br>your <i>favorite <br> color</i></h1>
@@ -389,8 +37,8 @@
 
             <div class="slide">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="../flasio/images/bg2-2.jpg">
-                    <img src="../flasio/images/bg2.webp">
+                    <source media="(max-width: 768px)" srcset="assets/images/bg2-2.jpg">
+                    <img src="assets/images/bg2.webp">
                 </picture>
                 <div class="slide-content">
                     <h1>Uncomplete <br>indoor <br> <i>gardening</i></h1>
@@ -400,8 +48,8 @@
 
             <div class="slide">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="../flasio/images/bg3-2.jpg">
-                    <img src="../flasio/images/bg3.webp">
+                    <source media="(max-width: 768px)" srcset="assets/images/bg3-2.jpg">
+                    <img src="assets/images/bg3.webp">
                 </picture>
                 <div class="slide-content">
                     <h1>Give the <br>gift <br> of <i>greenery</i></h1>
@@ -424,7 +72,8 @@
             <div class="category-grid">
                 <a href="#" class="category-item">
                     <div class="category-image">
-                        <img src="images/cat1.jpg" alt="House Plants & Tropical">
+                        <img src="assets/images/cat1.jpg"
+                            onerror="this.src='assets/images/cat1.jpg'" alt="House Plants & Tropical">
                         <div class="category-content">
                             <h3 class="category-name">House Plants<br>& Tropical</h3>
                             <i class="ph-light ph-arrow-right"></i>
@@ -433,7 +82,8 @@
                 </a>
                 <a href="#" class="category-item">
                     <div class="category-image">
-                        <img src="images/cat2.webp" alt="Perennials">
+                        <img src="assets/images/cat2.webp"
+                            onerror="this.src='assets/images/cat2.webp'" alt="Perennials">
                         <div class="category-content">
                             <h3 class="category-name">Perennials</h3>
                             <i class="ph-light ph-arrow-right"></i>
@@ -442,7 +92,8 @@
                 </a>
                 <a href="#" class="category-item">
                     <div class="category-image">
-                        <img src="images/cat3.webp" alt="Gifts & Accessories">
+                        <img src="assets/images/cat3.webp"
+                            onerror="this.src='assets/images/cat3.webp'" alt="Gifts & Accessories">
                         <div class="category-content">
                             <h3 class="category-name">Gifts &<br>Accessories</h3>
                             <i class="ph-light ph-arrow-right"></i>
@@ -456,7 +107,7 @@
     <section class="shop-all-products">
         <div class="container">
             <div class="img">
-                <img src="images/shop.jpg" alt="Shop All">
+                <img src="assets/images/shop.jpg" alt="Shop All">
                 <!-- Hotspot -->
                 <div class="hotspot" style="top:40%; left:60%;">
                     <span class="plus">+</span>
@@ -468,12 +119,10 @@
                 </div>
             </div>
             <div class="content">
-                <center>
-                    <h2>Beautiful plant <br> stands that encourage you to <i>get creative</i></h2>
-                </center>
+                <h2>Beautiful plant <br> stands that encourage you to <i>get creative</i></h2>
                 <p>Driven by a committment to encourage creativity with greenery, we design functional plant stands and
                     botanical wares that amplify plant wares within a space.</p>
-                <center><a href="index.html"><button class="shop-btn">Shop all our products</button></a></center>
+                <a href="index.html"><button class="shop-btn">Shop all our products</button></a>
             </div>
         </div>
     </section>
@@ -488,7 +137,7 @@
             <div class="products-slider">
                 <div class="product">
                     <div class="product-img">
-                        <a href="pages/product.html"><img src="images/product-1.webp" alt="Product 1"></a>
+                        <a href="assets/images/product-1.webp"><img src="assets/images/product-1.webp" alt="Product 1"></a>
                         <!-- Hover Buttons -->
                         <div class="hover-icons">
                             <button><i class="fa-solid fa-bag-shopping"></i></button>
@@ -502,12 +151,17 @@
                             class="fa-sharp-duotone fa-solid fa-star"></i><i
                             class="fa-sharp-duotone fa-solid fa-star"></i><i
                             class="fa-sharp-duotone fa-solid fa-star"></i></p>
-                    <h3>Product 1</h3>
+                    <h3>Bought together</h3>
                     <p>$53</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #000;" data-color="Black"></span>
+                        <span class="color" style="background: #e63946;" data-color="Red"></span>
+                    </div>
+
                 </div>
                 <div class="product">
                     <div class="product-img">
-                        <a href="pages/product.html"><img src="images/product-2.webp" alt="Product 2"></a>
+                        <a href="assets/images/product-2.webp"><img src="assets/images/product-2.webp" alt="Product 2"></a>
                         <!-- Hover Buttons -->
                         <div class="hover-icons">
                             <button><i class="fa-solid fa-bag-shopping"></i></button>
@@ -522,10 +176,14 @@
                             class="fa-sharp-duotone fa-solid fa-star"></i></p>
                     <h3>Jade Succulent</h3>
                     <p>$60 - $153.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #fe81e5;" data-color="Pink"></span>
+                        <span class="color" style="background: #000;" data-color="Black"></span>
+                    </div>
                 </div>
                 <div class="product">
                     <div class="product-img">
-                        <a href="pages/product.html"><img src="images/product-3.webp" alt="Product 3"></a>
+                        <a href="assets/images/product-3.webp"><img src="assets/images/product-3.webp" alt="Product 3"></a>
                         <!-- Hover Buttons -->
                         <div class="hover-icons">
                             <button><i class="fa-solid fa-bag-shopping"></i></button>
@@ -541,16 +199,21 @@
                             class="fa-sharp-duotone fa-solid fa-star"></i></p>
                     <h3>Palm</h3>
                     <p>$50</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #000;" data-color="Black"></span>
+                        <span class="color" style="background: #3964e6;" data-color="Blue"></span>
+                    </div>
                 </div>
                 <!-- 4th Product -->
                 <div class="product">
                     <div class="product-img">
-                        <a href="pages/product.html"><img src="images/product-4.webp" alt="Product 4" onerror="this.src='images/product-1.webp'"></a>
+                        <a href="assets/images/product-4.webp"><img src="assets/images/product-4.webp" alt="Product 4" onerror="this.src='assets/images/product-1.webp'"></a>
                         <!-- Hover Buttons -->
                         <div class="hover-icons">
                             <button><i class="fa-solid fa-bag-shopping"></i></button>
                             <button><i class="fa-solid fa-code-compare"></i></button>
-                            <button><i class="fa-regular fa-eye"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
                         </div>
                     </div>
                     <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
@@ -558,6 +221,10 @@
                             class="fa-sharp-duotone fa-solid fa-star"></i></p>
                     <h3>Ficus Audrey</h3>
                     <p>$85</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #828080;" data-color="Grey"></span>
+                        <span class="color" style="background: #e63946;" data-color="Red"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -569,19 +236,19 @@
         </div>
         <div class="container">
             <div class="img">
-                <img src="images/policy-8.svg" alt="Product 3">
+                <img src="assets/images/policy-8.svg" alt="Product 3">
                 <h3>Pick your plant</h3>
             </div>
             <div class="img">
-                <img src="images/policy-9.svg" alt="Product 3">
+                <img src="assets/images/policy-9.svg" alt="Product 3">
                 <h3>Choose a pot color</h3>
             </div>
             <div class="img">
-                <img src="images/policy-10.svg" alt="Product 3">
+                <img src="assets/images/policy-10.svg" alt="Product 3">
                 <h3>Have it shipped</h3>
             </div>
             <div class="img">
-                <img src="images/policy-11.svg" alt="Product 3">
+                <img src="assets/images/policy-11.svg" alt="Product 3">
                 <h3>Watch it grow</h3>
             </div>
         </div>
@@ -591,9 +258,9 @@
         <div class="slider-wrapper">
             <button class="prev">&#10094;</button>
             <div class="container">
-                <div class="image"><img src="images/slider-1.webp"></div>
-                <div class="image"><img src="images/slider-2.webp"></div>
-                <div class="image"><img src="images/slider-3.webp"></div>
+                <div class="image"><img src="assets/images/slider-1.webp"></div>
+                <div class="image"><img src="assets/images/slider-2.webp"></div>
+                <div class="image"><img src="assets/images/slider-3.webp"></div>
             </div>
             <button class="next">&#10095;</button>
         </div>
@@ -604,7 +271,7 @@
         <hr>
         <div class="con">
             <div class="join">
-                <img src="images/email.svg" alt="email">
+                <img src="assets/images/email.svg" alt="email">
                 <h2>Join the plant family for offers <br>care tips, and more!</h2>
             </div>
             <div class="mail">
@@ -704,7 +371,8 @@
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
 </body>
-<script src="script.js"></script>
-<script src="include.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/include.js"></script>
+<script>initIncludes('.');</script>
 
 </html>

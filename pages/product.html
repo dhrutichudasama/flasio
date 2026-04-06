@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product</title>
 
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 
 <style>
 body {
@@ -100,12 +100,12 @@ button {
 
         <!-- IMAGE -->
         <div class="product-images">
-            <img id="mainImage" src="../images/product-1.webp" class="main-image">
+            <img id="mainImage" src="../assets/images/product-1.webp" class="main-image">
 
             <div class="thumbnail-container">
-                <img src="../images/product-1.webp" class="thumbnail active">
-                <img src="../images/product-2.webp" class="thumbnail">
-                <img src="../images/product-3.webp" class="thumbnail">
+                <img src="../assets/images/product-1.webp" class="thumbnail active">
+                <img src="../assets/images/product-2.webp" class="thumbnail">
+                <img src="../assets/images/product-3.webp" class="thumbnail">
             </div>
         </div>
 
@@ -126,34 +126,11 @@ button {
 <!-- FOOTER -->
 <div id="footer"></div>
 
-<script>
-/* IMAGE SWITCH */
-const mainImage = document.getElementById("mainImage");
-const thumbnails = document.querySelectorAll(".thumbnail");
-
-thumbnails.forEach(img => {
-    img.addEventListener("click", () => {
-        mainImage.src = img.src;
-
-        thumbnails.forEach(t => t.classList.remove("active"));
-        img.classList.add("active");
-    });
-});
-
-/* HEADER FOOTER */
-const BASE_URL = "/flasio/";
-
-function loadComponent(id, file) {
-    fetch(BASE_URL + file)
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById(id).innerHTML = data;
-        });
-}
-
-loadComponent("header", "header.html");
-loadComponent("footer", "footer.html");
-</script>
+<script src="../assets/js/script.js"></script>
+    <script src="../assets/js/include.js"></script>
+    <script>
+        initIncludes('..');
+    </script>
 
 </body>
 </html>

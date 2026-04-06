@@ -7,7 +7,7 @@
     <title>Wishlist</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -112,14 +112,24 @@
             <h2>Wishlist</h2>
 
             <div class="breadcrumb">
-                <a href="../index.html">Home</a> / Wishlist
+                <a href="index.html">Home</a> / Wishlist
             </div>
 
             <hr>
 
             <!-- ITEM -->
             <div class="wishlist-item">
-                <img src="../images/product-1.webp" alt="">
+                <img src="../assets/images/product-1.webp" alt="">
+
+                <div class="wishlist-details">
+                    <h3>Jade Succulent</h3>
+                    <div class="rating">★ ★ ★ ☆ ☆</div>
+                    <div class="price">$60.00 - $153.00</div>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </div>
+            <div class="wishlist-item">
+                <img src="../assets/images/product-2.webp" alt="">
 
                 <div class="wishlist-details">
                     <h3>Jade Succulent</h3>
@@ -136,19 +146,10 @@
     <div id="footer"></div>
 
     <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/include.js"></script>
     <script>
-        const BASE_URL = "/flasio/";
-
-        function loadComponent(id, file) {
-            fetch(BASE_URL + file)
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById(id).innerHTML = data;
-                });
-        }
-
-        loadComponent("header", "header.html");
-        loadComponent("footer", "footer.html");
+        initIncludes('..');
     </script>
 
 </body>

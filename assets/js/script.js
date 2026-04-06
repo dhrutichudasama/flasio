@@ -1,49 +1,58 @@
+function initApp() {
 // Currency Dropdown
 const currencyDropdown = document.querySelector('.currency-dropdown');
-const currencyMenu = currencyDropdown.querySelector('.dropdown-menu');
-const currencyText = document.querySelector('.currency-text');
-const currencyItems = currencyDropdown.querySelectorAll('.dropdown-item');
+if (currencyDropdown) {
+    const currencyMenu = currencyDropdown.querySelector('.dropdown-menu');
+    const currencyText = document.querySelector('.currency-text');
+    const currencyItems = currencyDropdown.querySelectorAll('.dropdown-item');
 
-currencyDropdown.addEventListener('click', function(e) {
-    e.stopPropagation();
-    currencyMenu.classList.toggle('active');
-    languageMenu.classList.remove('active');
-});
-
-currencyItems.forEach(item => {
-    item.addEventListener('click', function(e) {
+    currencyDropdown.addEventListener('click', function(e) {
         e.stopPropagation();
-        const selectedCurrency = this.dataset.currency;
-        currencyText.textContent = selectedCurrency;
-        currencyMenu.classList.remove('active');
+        currencyMenu.classList.toggle('active');
+        const languageMenu = document.querySelector('.language-dropdown .dropdown-menu');
+        if(languageMenu) languageMenu.classList.remove('active');
     });
-});
+
+    currencyItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const selectedCurrency = this.dataset.currency;
+            currencyText.textContent = selectedCurrency;
+            currencyMenu.classList.remove('active');
+        });
+    });
+}
 
 // Language Dropdown
 const languageDropdown = document.querySelector('.language-dropdown');
-const languageMenu = languageDropdown.querySelector('.dropdown-menu');
-const languageText = document.querySelector('.language-text');
-const languageItems = languageDropdown.querySelectorAll('.dropdown-item');
+if (languageDropdown) {
+    const languageMenu = languageDropdown.querySelector('.dropdown-menu');
+    const languageText = document.querySelector('.language-text');
+    const languageItems = languageDropdown.querySelectorAll('.dropdown-item');
 
-languageDropdown.addEventListener('click', function(e) {
-    e.stopPropagation();
-    languageMenu.classList.toggle('active');
-    currencyMenu.classList.remove('active');
-});
-
-languageItems.forEach(item => {
-    item.addEventListener('click', function(e) {
+    languageDropdown.addEventListener('click', function(e) {
         e.stopPropagation();
-        const selectedLanguage = this.dataset.language;
-        languageText.textContent = selectedLanguage;
-        languageMenu.classList.remove('active');
+        languageMenu.classList.toggle('active');
+        const currencyMenu = document.querySelector('.currency-dropdown .dropdown-menu');
+        if(currencyMenu) currencyMenu.classList.remove('active');
     });
-});
+
+    languageItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const selectedLanguage = this.dataset.language;
+            languageText.textContent = selectedLanguage;
+            languageMenu.classList.remove('active');
+        });
+    });
+}
 
 // Close dropdowns when clicking outside
 document.addEventListener('click', function() {
-    currencyMenu.classList.remove('active');
-    languageMenu.classList.remove('active');
+    const currencyMenu = document.querySelector('.currency-dropdown .dropdown-menu');
+    const languageMenu = document.querySelector('.language-dropdown .dropdown-menu');
+    if(currencyMenu) currencyMenu.classList.remove('active');
+    if(languageMenu) languageMenu.classList.remove('active');
 });
 
 // Banner Slider
@@ -165,7 +174,6 @@ window.addEventListener('scroll', () => {
 });
 
 // Mobile Sidebar
-document.addEventListener("DOMContentLoaded", function() {
     const mobileSidebar = document.getElementById('mobile-sidebar');
     const openSidebarBtn = document.getElementById('open-sidebar');
     const closeSidebarBtn = document.getElementById('close-sidebar');
@@ -184,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (openSidebarBtn) {
         openSidebarBtn.addEventListener('click', openSidebar);
+        openSidebarBtn.addEventListener('touchstart', openSidebar, {passive: false});
     }
     if (closeSidebarBtn) {
         closeSidebarBtn.addEventListener('click', closeSidebar);
@@ -191,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (sidebarOverlay) {
         sidebarOverlay.addEventListener('click', closeSidebar);
     }
-});
 
 // tab effect
 let titles = ["📢 Come back!", "⚡ Don't forget this..."];
@@ -225,54 +233,52 @@ closeBtn.addEventListener("click", () => {
 });
 
 // Infinite Scroll for Featured Products Slider
-document.addEventListener("DOMContentLoaded", function() {
     const productsSlider = document.querySelector('.products-slider');
-    if (!productsSlider) return;
+    if (productsSlider) {
+        // Clone elements for infinite scrolling effect
+        const products = Array.from(productsSlider.children);
 
-    // Clone elements for infinite scrolling effect
-    const products = Array.from(productsSlider.children);
-
-    // --- NEW: Circular Hover Image Swap Logic ---
-    products.forEach((product, i) => {
-        const productImgContainer = product.querySelector('.product-img');
-        const primaryImg = productImgContainer.querySelector('img');
-        
-        // Add class to primary image
-        primaryImg.classList.add('primary-img');
-
-        // Get the next product (looping)
-        const nextProduct = products[(i + 2) % products.length];
-        const nextImgSrc = nextProduct.querySelector('img').src;
-
-        // Create and add the hover image
-        const hoverImg = document.createElement('img');
-        hoverImg.src = nextImgSrc;
-        hoverImg.classList.add('hover-img');
-        productImgContainer.appendChild(hoverImg);
-    });
-    // --------------------------------------------
-
-    products.forEach(product => {
-        const clone = product.cloneNode(true);
-        productsSlider.appendChild(clone);
-    });
-
-    productsSlider.addEventListener('scroll', () => {
-        const halfScrollWidth = productsSlider.scrollWidth / 2;
-        
-        // If we've scrolled exactly to the end of the original set, loop back transparently
-        if (productsSlider.scrollLeft >= halfScrollWidth - 1) {
-            productsSlider.style.scrollBehavior = 'auto';
-            productsSlider.scrollLeft -= halfScrollWidth;
+        // --- NEW: Circular Hover Image Swap Logic ---
+        products.forEach((product, i) => {
+            const productImgContainer = product.querySelector('.product-img');
+            const primaryImg = productImgContainer.querySelector('img');
             
-            requestAnimationFrame(() => {
+            // Add class to primary image
+            primaryImg.classList.add('primary-img');
+
+            // Get the next product (looping)
+            const nextProduct = products[(i + 2) % products.length];
+            const nextImgSrc = nextProduct.querySelector('img').src;
+
+            // Create and add the hover image
+            const hoverImg = document.createElement('img');
+            hoverImg.src = nextImgSrc;
+            hoverImg.classList.add('hover-img');
+            productImgContainer.appendChild(hoverImg);
+        });
+        // --------------------------------------------
+
+        products.forEach(product => {
+            const clone = product.cloneNode(true);
+            productsSlider.appendChild(clone);
+        });
+
+        productsSlider.addEventListener('scroll', () => {
+            const halfScrollWidth = productsSlider.scrollWidth / 2;
+            
+            // If we've scrolled exactly to the end of the original set, loop back transparently
+            if (productsSlider.scrollLeft >= halfScrollWidth - 1) {
+                productsSlider.style.scrollBehavior = 'auto';
+                productsSlider.scrollLeft -= halfScrollWidth;
+                
                 requestAnimationFrame(() => {
-                    productsSlider.style.scrollBehavior = '';
+                    requestAnimationFrame(() => {
+                        productsSlider.style.scrollBehavior = '';
+                    });
                 });
-            });
-        }
-    });
-});
+            }
+        });
+    }
 
 // second slider (Responsive Infinite Image Slider)
 const wrapper = document.querySelector('.slider-wrapper');
@@ -397,3 +403,11 @@ backToTopBtn.addEventListener("click", () => {
 //         });
 //     });
 // });
+} // End initApp
+
+document.addEventListener('componentsLoaded', initApp);
+
+// Fallback in case components are omitted or already loaded
+if (document.readyState === 'complete' || (document.getElementById('header') && document.getElementById('header').innerHTML.trim() !== '')) {
+    initApp();
+}
