@@ -437,14 +437,19 @@ if (document.readyState === 'complete' || (document.getElementById('header') && 
 // cart Section
 const cartWrapper = document.querySelector('.cart-wrapper');
 
-let timeout;
+if (cartWrapper) {
 
-cartWrapper.addEventListener('mouseleave', () => {
-    timeout = setTimeout(() => {
-        cartWrapper.classList.remove('active');
-    }, 200);
-});
+    let timeout;
 
-cartWrapper.addEventListener('mouseenter', () => {
-    clearTimeout(timeout);
-});
+    cartWrapper.addEventListener('mouseleave', () => {
+        timeout = setTimeout(() => {
+            cartWrapper.classList.remove('active');
+        }, 200);
+    });
+
+    cartWrapper.addEventListener('mouseenter', () => {
+        clearTimeout(timeout);
+        cartWrapper.classList.add('active'); // 🔥 ye missing tha
+    });
+
+}
