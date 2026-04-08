@@ -1,136 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Philippine (Upsell) - Flasio</title>
 
-<link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* MAIN */
-.main {
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-}
-
-.container {
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-}
-
-/* IMAGE SLIDER */
-.product-images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.main-image {
-    width: 100%;
-    max-width: 500px;
-    height: 450px;
-    object-fit: cover;
-}
-
-/* THUMBNAILS */
-.thumbnail-container {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.thumbnail {
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-    object-fit: cover;
-    border: 2px solid transparent;
-}
-
-.thumbnail.active {
-    border: 2px solid black;
-}
-
-/* DETAILS */
-.product-details {
-    margin-top: 30px;
-}
-
-.product-title {
-    font-size: 26px;
-    margin-bottom: 10px;
-}
-
-.price {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.desc {
-    color: #555;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 12px 25px;
-    border: none;
-    background: black;
-    color: white;
-    cursor: pointer;
-}
-</style>
+    <link rel="stylesheet" href="../assets/css/product.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div id="header"></div>
+    <!-- HEADER -->
+    <div id="header"></div>
 
-<div class="main">
-    <div class="container">
-
-        <!-- IMAGE -->
-        <div class="product-images">
-            <img id="mainImage" src="../assets/images/product-1.webp" class="main-image">
-
-            <div class="thumbnail-container">
-                <img src="../assets/images/product-1.webp" class="thumbnail active">
-                <img src="../assets/images/product-2.webp" class="thumbnail">
-                <img src="../assets/images/product-3.webp" class="thumbnail">
+    <div class="pp-main">
+        <div class="pp-container">
+            <!-- BREADCRUMB -->
+            <div class="pp-breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> <a href="#">A Philippine (Upsell)</a>
             </div>
-        </div>
 
-        <!-- DETAILS -->
-        <div class="product-details">
-            <h1 class="product-title">Jade Succulent</h1>
-            <div class="price">$60.00</div>
-            <p class="desc">
-                Beautiful indoor plant perfect for decoration. Easy to maintain and long lasting.
-            </p>
+            <!-- 3-IMAGE GALLERY HERO -->
+            <div class="pp-gallery-wrapper">
+                <button class="pp-gallery-btn pp-gallery-prev"><i class="ph ph-caret-left"></i></button>
+                <div class="pp-gallery">
+                    <img src="../assets/images/product-4.webp" alt="Product Image 1">
+                    <img src="../assets/images/product-2.webp" alt="Product Image Main">
+                    <img src="../assets/images/product-3.webp" alt="Product Image 3">
+                </div>
+                <button class="pp-gallery-btn pp-gallery-next"><i class="ph ph-caret-right"></i></button>
+            </div>
 
-            <button>Add to Cart</button>
-        </div>
+            <!-- PRODUCT INFO CENTERED -->
+            <div class="pp-info-container">
+                <h1 class="pp-title">A Philippine (Upsell)</h1>
+                <div class="pp-price">$80.00</div>
+                <div class="pp-payment-terms">Or 4 interest-free payments of $20.00 by <strong>Stripe</strong></div>
+                
+                <div class="pp-tags">
+                    <div class="pp-tag-soldout"><i class="fa-solid fa-fire"></i> Almost Sold Out: 15 left!</div>
+                    <div class="pp-tag-stock"><i class="fa-solid fa-check"></i> In stock</div>
+                </div>
 
-    </div>
-</div>
+                <p class="pp-short-desc">
+                    Combining the elegance of lush foliage with a minimalist, modern aesthetic. This beautiful desk-sized plant brings natural warmth into any interior space without overwhelming it, perfect for both the office and home.
+                </p>
 
-<!-- FOOTER -->
-<div id="footer"></div>
+                <div class="pp-color-wrap">
+                    <span class="pp-color-label">Color: Multi</span>
+                    <div class="pp-swatches">
+                        <div class="pp-swatch active">
+                            <div class="pp-swatch-inner" style="background-image: url('../assets/images/product-2.webp');"></div>
+                        </div>
+                        <div class="pp-swatch">
+                            <div class="pp-swatch-inner" style="background-image: url('../assets/images/product-3.webp');"></div>
+                        </div>
+                    </div>
+                </div>
 
-<script src="../assets/js/script.js"></script>
+                <div class="pp-actions-row">
+                    <div class="pp-qty">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <button class="pp-add-btn">ADD TO CART</button>
+                    <button class="pp-wishlist-btn"><i class="ph ph-heart"></i></button>
+                </div>
+
+                <label class="pp-agreements">
+                    <input type="checkbox" checked> I agree with the Terms and Conditions
+                </label>
+
+                <button class="pp-buy-now">Buy It Now</button>
+
+                <div class="pp-links">
+                    <div><i class="ph ph-arrows-left-right"></i> Compare</div>
+                    <div><i class="ph ph-question"></i> Ask a question</div>
+                    <div><i class="ph ph-truck"></i> Shipping & Delivery</div>
+                    <div><i class="ph ph-share-network"></i> Share</div>
+                </div>
+
+                <div class="pp-order-notice">
+                    <i class="ph ph-truck" style="font-size: 32px"></i>
+                    <div>Order in the next <strong>10 hours 45 minutes</strong> to get it between <strong>Thursday, Aug 24</strong> and <strong>Monday, Aug 28</strong>.</div>
+                </div>
+
+                <div class="pp-buy-with">
+                    <h4>Buy It With</h4>
+                    <div class="pp-bw-item">
+                        <label><input type="checkbox" checked></label>
+                        <img src="../assets/images/product-6.webp" alt="Buy With Item">
+                        <div class="pp-bw-info">
+                            <span>This item:</span>
+                            <div>$80.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pp-trust">
+                    <p>Guaranteed Safe Checkout</p>
+                    <div class="pp-trust-icons">
+                        <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
+                        <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
+                        <i class="fa-brands fa-cc-amex" style="color: #2ea0ef;"></i>
+                        <i class="fa-brands fa-stripe" style="color: #635bff;"></i>
+                        <i class="fa-brands fa-cc-paypal" style="color: #003087;"></i>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="pp-tabs-header">
+                    <div class="pp-tab active" onclick="switchTab(this, 'tab-desc')">Description</div>
+                    <div class="pp-tab" onclick="switchTab(this, 'tab-rev')">Review</div>
+                    <div class="pp-tab" onclick="switchTab(this, 'tab-ship')">Shipping</div>
+                    <div class="pp-tab" onclick="switchTab(this, 'tab-ret')">Return</div>
+                </div>
+
+                <div id="tab-desc" class="pp-tab-content active">
+                    <p>Combining the elegance of lush foliage with a minimalist, modern aesthetic. This beautiful desk-sized plant brings natural warmth into any interior space without overwhelming it, perfect for both the office and home environment. Sourced from the finest local greenhouses to ensure optimum vitality upon delivery.</p>
+                    <p>Hand-potted in a premium two-tone ceramic pot that actively prevents root rot and drainage issues through its smart inner contouring system.</p>
+                    <ul>
+                        <li>Includes carefully curated nutrient mix perfect for immediate growth and stability</li>
+                        <li>Pet-friendly and non-toxic variations are available upon special request</li>
+                        <li>Requires indirect light and minimal watering—ideal for busy individuals</li>
+                        <li>10-inch overall height (including the pot base), perfectly scaled for desktops</li>
+                    </ul>
+                </div>
+                <div id="tab-rev" class="pp-tab-content">
+                    <p>Currently, there are no reviews for this product. Be the first to leave one!</p>
+                </div>
+                <div id="tab-ship" class="pp-tab-content">
+                    <p>We pack each plant with the utmost care, ensuring the leaves and stems are protected during transit. Standard delivery arrives within 3-5 business days. Express shipping is available at checkout.</p>
+                </div>
+                <div id="tab-ret" class="pp-tab-content">
+                    <p>If your plant arrives damaged or unhealthy, we offer a 14-day hassle-free replacement or full refund policy. Simply contact our support team with a photo of the plant.</p>
+                </div>
+
+            </div> <!-- End Info Container -->
+
+            <!-- PRODUCTS GRIDS -->
+            
+            <!-- Related Products -->
+            <h2 class="pp-section-title">Related Products</h2>
+            <div class="pp-product-grid">
+                <!-- Card 1 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <img src="../assets/images/product-5.webp" alt="The Beginner Kit">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="pp-card-title">The Beginner Kit</h3>
+                    <div class="pp-card-price">$60.00</div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#444"></div>
+                        <div class="pp-c-swatch" style="background:#eee"></div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <div class="pp-card-badge">-10%</div>
+                        <img src="../assets/images/product-6.webp" alt="Umbrella Tree">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i>
+                    </div>
+                    <h3 class="pp-card-title">Umbrella Tree</h3>
+                    <div class="pp-card-price"><span class="orig">$45.00</span><span class="sale">$40.50</span></div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#2a9d8f"></div>
+                        <div class="pp-c-swatch" style="background:#fe81e5"></div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <div class="pp-card-badge">-15%</div>
+                        <img src="../assets/images/product-2.webp" alt="Jade Succulent">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="pp-card-title">Jade Succulent</h3>
+                    <div class="pp-card-price"><span class="orig">$180.00</span><span class="sale">$153.00</span></div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#e63946"></div>
+                        <div class="pp-c-swatch" style="background:#f4c150"></div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <img src="../assets/images/product-3.webp" alt="Mini Fern">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i>
+                    </div>
+                    <h3 class="pp-card-title">Mini Fern</h3>
+                    <div class="pp-card-price">$40.00</div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#fff"></div>
+                        <div class="pp-c-swatch" style="background:#000"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recently Viewed Products -->
+            <h2 class="pp-section-title">Recently Viewed Products</h2>
+            <div class="pp-product-grid">
+                <!-- Card 1 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <img src="../assets/images/product-1.webp" alt="A Philippine (Upsell)">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="pp-card-title">A Philippine (Upsell)</h3>
+                    <div class="pp-card-price">$80.00</div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#222"></div>
+                        <div class="pp-c-swatch" style="background:#ccc"></div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <img src="../assets/images/product-7.webp" alt="Desert Succulent">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i>
+                    </div>
+                    <h3 class="pp-card-title">Desert Succulent</h3>
+                    <div class="pp-card-price">$55.00</div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#e63946"></div>
+                        <div class="pp-c-swatch" style="background:#2a9d8f"></div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <img src="../assets/images/product-5.webp" alt="The Beginner Kit">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="pp-card-title">The Beginner Kit</h3>
+                    <div class="pp-card-price">$60.00</div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#fe81e5"></div>
+                        <div class="pp-c-swatch" style="background:#fff"></div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="pp-card">
+                    <div class="pp-card-img-wrap">
+                        <div class="pp-card-badge">-20%</div>
+                        <img src="../assets/images/product-6.webp" alt="Umbrella Tree">
+                        <button class="pp-card-wishlist"><i class="ph ph-heart"></i></button>
+                    </div>
+                    <div class="pp-card-stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i>
+                    </div>
+                    <h3 class="pp-card-title">Umbrella Tree</h3>
+                    <div class="pp-card-price"><span class="orig">$50.00</span><span class="sale">$40.00</span></div>
+                    <div class="pp-card-swatches">
+                        <div class="pp-c-swatch" style="background:#222"></div>
+                        <div class="pp-c-swatch" style="background:#e63946"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end pp-container -->
+    </div> <!-- end pp-main -->
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script src="../assets/js/script.js"></script>
     <script src="../assets/js/include.js"></script>
     <script>
         initIncludes('..');
-    </script>
 
+        // Simple Tab Switching Logic
+        function switchTab(clickedTab, targetId) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.pp-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Hide all tab contents
+            document.querySelectorAll('.pp-tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Activate target
+            clickedTab.classList.add('active');
+            document.getElementById(targetId).classList.add('active');
+        }
+
+        // Gallery Slider & Zoom
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryInner = document.querySelector('.pp-gallery');
+            const galleryWrapper = document.querySelector('.pp-gallery-wrapper');
+            const prevBtn = document.querySelector('.pp-gallery-prev');
+            const nextBtn = document.querySelector('.pp-gallery-next');
+
+            if (galleryInner) {
+                // Clone items to ensure we have at least 5 for smooth absolute infinite sliding
+                let originalImages = Array.from(galleryInner.querySelectorAll('img'));
+                if (originalImages.length === 3) {
+                    originalImages.forEach(img => {
+                        let clone = img.cloneNode(true);
+                        galleryInner.appendChild(clone);
+                    });
+                }
+
+                let slides = Array.from(galleryInner.querySelectorAll('img'));
+                slides.forEach(slide => slide.classList.add('pp-slide'));
+
+                let currentIndex = 1; // Start with the second image as center
+
+                function updateGallery() {
+                    slides.forEach((slide, i) => {
+                        slide.className = 'pp-slide'; // reset all positional classes
+                        slide.style.transformOrigin = 'center center';
+                        
+                        let diff = (i - currentIndex + slides.length) % slides.length;
+                        
+                        if (diff === 0) {
+                            slide.classList.add('pos-center');
+                        } else if (diff === 1) {
+                            slide.classList.add('pos-right');
+                        } else if (diff === 2 && slides.length > 3) {
+                            slide.classList.add('pos-off-right');
+                        } else if (diff === slides.length - 1) {
+                            slide.classList.add('pos-left');
+                        } else if (diff === slides.length - 2 && slides.length > 3) {
+                            slide.classList.add('pos-off-left');
+                        } else {
+                            slide.classList.add('pos-hidden');
+                        }
+                    });
+                }
+
+                updateGallery();
+
+                function unzoom() {
+                    const zoomed = document.querySelector('.pos-center.zoomed');
+                    if(zoomed) zoomed.classList.remove('zoomed');
+                }
+
+                nextBtn.addEventListener('click', () => {
+                    unzoom();
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateGallery();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    unzoom();
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateGallery();
+                });
+
+                // Zoom Logic
+                galleryInner.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('pos-center')) {
+                        const img = e.target;
+                        if (img.classList.contains('zoomed')) {
+                            img.classList.remove('zoomed');
+                        } else {
+                            img.classList.add('zoomed');
+                            const rect = img.getBoundingClientRect();
+                            const x = ((e.clientX - rect.left) / rect.width) * 100;
+                            const y = ((e.clientY - rect.top) / rect.height) * 100;
+                            img.style.transformOrigin = `${x}% ${y}%`;
+                        }
+                    }
+                });
+
+                galleryWrapper.addEventListener('mousemove', (e) => {
+                    const zoomedImg = galleryInner.querySelector('.pos-center.zoomed');
+                    if (zoomedImg) {
+                        const rect = galleryWrapper.getBoundingClientRect();
+                        const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+                        const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
+                        zoomedImg.style.transformOrigin = `${x}% ${y}%`;
+                    }
+                });
+
+                // Touch/Swipe Mobile Support
+                let startX = 0;
+                galleryInner.addEventListener('touchstart', (e) => {
+                    startX = e.changedTouches[0].screenX;
+                }, {passive: true});
+                
+                galleryInner.addEventListener('touchend', (e) => {
+                    let endX = e.changedTouches[0].screenX;
+                    if (startX - endX > 50) {
+                        nextBtn.click();
+                    } else if (endX - startX > 50) {
+                        prevBtn.click();
+                    }
+                });
+            }
+        });
+
+        // Qty UI interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const minusBtn = document.querySelector('.pp-qty button:first-child');
+            const plusBtn = document.querySelector('.pp-qty button:last-child');
+            const qtySpan = document.querySelector('.pp-qty span');
+            let qty = 1;
+
+            minusBtn.addEventListener('click', () => {
+                if(qty > 1) {
+                    qty--;
+                    qtySpan.textContent = qty;
+                }
+            });
+            plusBtn.addEventListener('click', () => {
+                qty++;
+                qtySpan.textContent = qty;
+            });
+        });
+    </script>
 </body>
 </html>

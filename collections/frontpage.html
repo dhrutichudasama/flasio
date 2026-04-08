@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Flasio</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+        
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        .frontpage-section {
+            padding: 60px 0;
+            min-height: 50vh;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Match product-img perfectly to the featured collection */
+        .product-grid .product-img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .product-grid .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .product-grid .product-img .primary-img {
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+        }
+
+        .product-grid .product-img .hover-img {
+            z-index: 1;
+            opacity: 0;
+            transform: scale(1.2);
+        }
+
+        .product-grid .product:hover .product-img .primary-img {
+            opacity: 0;
+        }
+
+        .product-grid .product:hover .product-img .hover-img {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .product h3{
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .product p{
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .product p i{
+            color: #9e9e9e;
+        }
+        .banner img{
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+        }
+        .col-header{
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .col-header ul{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 50px;
+        }
+        /* Filter Dropdown CSS */
+        .col-header ul li {
+            list-style: none;
+            font-size: 19px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative; /* Anchor for absolute dropdown */
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .col-header ul li i {
+            font-size: 10px;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .filter-panel {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 20px;
+            width: max-content;
+            min-width: 200px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        /* Show the panel when activated via JS */
+        .col-header ul li.active .filter-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .col-header ul li.active i {
+            transform: rotate(180deg);
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #444;
+        }
+        
+        .filter-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-option input {
+            margin-right: 10px;
+        }
+
+        /* Color Swatches inside the filter */
+        .filter-colors {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .filter-swatch.active {
+            border-color: #222;
+            transform: scale(1.1);
+        }
+
+        #no-products-message {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-top: 50px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- MAIN FRONTPAGE SECTION -->
+     <!-- <div class="banner">
+            <img src="../assets/images/banner-1.webp" alt="">
+        </div> -->
+    <div class="frontpage-section">
+        <div class="col-header">
+            <div class="container">
+                <ul id="filter-menu">
+                    <!-- Collections -->
+                    <li>Collections <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-panel" onclick="event.stopPropagation();">
+                            <label class="filter-option"><input type="checkbox" data-filter-type="collection" value="plants"> Plants</label>
+                            <label class="filter-option"><input type="checkbox" data-filter-type="collection" value="pots"> Pots</label>
+                            <label class="filter-option"><input type="checkbox" data-filter-type="collection" value="tools"> Tools</label>
+                        </div>
+                    </li>
+                    <!-- Availability -->
+                    <li>Availability <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-panel" onclick="event.stopPropagation();">
+                            <label class="filter-option"><input type="radio" name="availability" data-filter-type="availability" value="all" checked> All</label>
+                            <label class="filter-option"><input type="radio" name="availability" data-filter-type="availability" value="in-stock"> In Stock</label>
+                            <label class="filter-option"><input type="radio" name="availability" data-filter-type="availability" value="out-of-stock"> Out of Stock</label>
+                        </div>
+                    </li>
+                    <!-- Price -->
+                    <li>Price <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-panel" onclick="event.stopPropagation();">
+                            <label class="filter-option">Max Price: $<span id="price-output">1000</span></label>
+                            <input type="range" id="price-slider" min="0" max="1000" value="1000" style="width: 100%;">
+                        </div>
+                    </li>
+                    <!-- Size -->
+                    <li>Size <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-panel" onclick="event.stopPropagation();">
+                            <label class="filter-option"><input type="checkbox" data-filter-type="size" value="small"> Small</label>
+                            <label class="filter-option"><input type="checkbox" data-filter-type="size" value="medium"> Medium</label>
+                            <label class="filter-option"><input type="checkbox" data-filter-type="size" value="large"> Large</label>
+                        </div>
+                    </li>
+                    <!-- Color -->
+                    <li>Color <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-panel" onclick="event.stopPropagation();">
+                            <div class="filter-colors">
+                                <div class="filter-swatch" style="background-color: #000;" data-filter-type="color" value="black"></div>
+                                <div class="filter-swatch" style="background-color: #e63946;" data-filter-type="color" value="red"></div>
+                                <div class="filter-swatch" style="background-color: #fe81e5;" data-filter-type="color" value="pink"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-grid">
+                
+                <!-- Product Card 1 -->
+                <div class="product" data-collection="plants" data-availability="in-stock" data-price="53" data-size="small" data-colors="black,red">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-1.webp" alt="Product 1"></a>
+                        <div class="hover-icons">
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
+                        </div>
+                    </div>
+                    <p><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i></p>
+                    <h3>Bought together</h3>
+                    <p>$53</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #000;"></span>
+                        <span class="color" style="background: #e63946;"></span>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product" data-collection="pots" data-availability="in-stock" data-price="153" data-size="medium" data-colors="pink,black">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-2.webp" alt="Product 2"></a>
+                        <div class="hover-icons">
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
+                        </div>
+                    </div>
+                    <p><i class="fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i></p>
+                    <h3>Jade Succulent</h3>
+                    <p>$153.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #fe81e5;"></span>
+                        <span class="color" style="background: #000;"></span>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product" data-collection="tools" data-availability="out-of-stock" data-price="25" data-size="large" data-colors="black">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-3.webp" alt="Product 3"></a>
+                        <div class="hover-icons">
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
+                        </div>
+                    </div>
+                    <p><i class="fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i></p>
+                    <h3>Garden Trowel</h3>
+                    <p>$25.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #000;"></span>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product" data-collection="plants" data-availability="in-stock" data-price="85" data-size="medium" data-colors="red">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-4.webp" alt="Product 4"></a>
+                        <div class="hover-icons">
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
+                        </div>
+                    </div>
+                    <p><i class="fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i></p>
+                    <h3>Red Rose Bush</h3>
+                    <p>$85.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #e63946;"></span>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product" data-collection="pots" data-availability="in-stock" data-price="120" data-size="large" data-colors="pink">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-5.webp" alt="Product 5"></a>
+                        <div class="hover-icons">
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
+                        </div>
+                    </div>
+                    <p><i class="fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i></p>
+                    <h3>Pink Ceramic Pot</h3>
+                    <p>$120.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #fe81e5;"></span>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product" data-collection="plants" data-availability="in-stock" data-price="40" data-size="small" data-colors="black">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-6.webp" alt="Product 6"></a>
+                        <div class="hover-icons">
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                            <button><i class="ph ph-heart"></i></button>
+                        </div>
+                    </div>
+                    <p><i class="fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i><i class="fa-duotone fa-solid fa-star"></i></p>
+                    <h3>Mini Fern</h3>
+                    <p>$40.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #000;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="no-products-message">No products match your selected filters.</div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <!-- JS -->
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/include.js"></script>
+    <script>
+        initIncludes('..');
+
+        document.addEventListener('DOMContentLoaded', initFrontpage);
+
+        // Core Filter State
+        const filterState = {
+            collections: [],
+            availability: 'all',
+            maxPrice: 1000,
+            sizes: [],
+            colors: []
+        };
+
+        function initFrontpage() {
+            // Setup Product Hover Elements
+            const productGrid = document.getElementById('product-grid');
+            if (productGrid) {
+                const products = productGrid.querySelectorAll('.product');
+                products.forEach((product, index) => {
+                    setupHoverImage(product, products, index);
+                });
+            }
+
+            setupDropdowns();
+            setupFilterListeners();
+        }
+
+        // Dropdown toggle functionality
+        function setupDropdowns() {
+            const menuItems = document.querySelectorAll('#filter-menu > li');
+            
+            menuItems.forEach(li => {
+                li.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const wasActive = li.classList.contains('active');
+                    // Close all others
+                    menuItems.forEach(item => item.classList.remove('active'));
+                    // Toggle current
+                    if (!wasActive) li.classList.add('active');
+                });
+            });
+
+            // Close on outside click
+            window.addEventListener('click', () => {
+                menuItems.forEach(item => item.classList.remove('active'));
+            });
+        }
+
+        // Listen for filter changes and update state
+        function setupFilterListeners() {
+            // Collections & Sizes (Checkboxes)
+            document.querySelectorAll('input[type="checkbox"][data-filter-type]').forEach(cb => {
+                cb.addEventListener('change', (e) => {
+                    const type = e.target.getAttribute('data-filter-type');
+                    const val = e.target.value;
+                    if (e.target.checked) {
+                        if (type === 'collection') filterState.collections.push(val);
+                        if (type === 'size') filterState.sizes.push(val);
+                    } else {
+                        if (type === 'collection') filterState.collections = filterState.collections.filter(v => v !== val);
+                        if (type === 'size') filterState.sizes = filterState.sizes.filter(v => v !== val);
+                    }
+                    applyFilters();
+                });
+            });
+
+            // Availability (Radios)
+            document.querySelectorAll('input[type="radio"][data-filter-type="availability"]').forEach(r => {
+                r.addEventListener('change', (e) => {
+                    filterState.availability = e.target.value;
+                    applyFilters();
+                });
+            });
+
+            // Price (Range Slider)
+            const priceSlider = document.getElementById('price-slider');
+            const priceOutput = document.getElementById('price-output');
+            if (priceSlider) {
+                priceSlider.addEventListener('input', (e) => {
+                    filterState.maxPrice = parseFloat(e.target.value);
+                    priceOutput.innerText = filterState.maxPrice;
+                    applyFilters();
+                });
+            }
+
+            // Colors (Custom Swatches)
+            document.querySelectorAll('.filter-swatch').forEach(sw => {
+                sw.addEventListener('click', (e) => {
+                    sw.classList.toggle('active');
+                    const val = sw.getAttribute('value');
+                    if (sw.classList.contains('active')) {
+                        filterState.colors.push(val);
+                    } else {
+                        filterState.colors = filterState.colors.filter(v => v !== val);
+                    }
+                    applyFilters();
+                });
+            });
+        }
+
+        // Execute Filtering Logic over DOM elements
+        function applyFilters() {
+            const products = document.querySelectorAll('.product');
+            let visibleCount = 0;
+
+            products.forEach(product => {
+                const prodCollection = product.getAttribute('data-collection');
+                const prodAvailability = product.getAttribute('data-availability');
+                const prodPrice = parseFloat(product.getAttribute('data-price') || 0);
+                const prodSize = product.getAttribute('data-size');
+                const prodColors = (product.getAttribute('data-colors') || "").split(',');
+
+                // Match tests
+                const matchesCollection = filterState.collections.length === 0 || filterState.collections.includes(prodCollection);
+                const matchesAvailability = filterState.availability === 'all' || filterState.availability === prodAvailability;
+                const matchesPrice = prodPrice <= filterState.maxPrice;
+                const matchesSize = filterState.sizes.length === 0 || filterState.sizes.includes(prodSize);
+                const matchesColor = filterState.colors.length === 0 || filterState.colors.some(c => prodColors.includes(c));
+
+                if (matchesCollection && matchesAvailability && matchesPrice && matchesSize && matchesColor) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // Toggle No Products Message
+            const noProductsMsg = document.getElementById('no-products-message');
+            if (noProductsMsg) {
+                noProductsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        }
+
+        function setupHoverImage(product, products, index) {
+            const imgContainer = product.querySelector('.product-img');
+            const primaryImg = imgContainer.querySelector('img');
+            
+            if (primaryImg) {
+                primaryImg.classList.add('primary-img');
+
+                // Mock hover using next image
+                const nextProduct = products[(index + 1) % products.length];
+                const nextImgSrc = nextProduct.querySelector('img').src;
+
+                const hoverImg = document.createElement('img');
+                hoverImg.src = nextImgSrc;
+                hoverImg.classList.add('hover-img');
+                imgContainer.appendChild(hoverImg);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -4,99 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist</title>
+    <title>Wishlist - Flasio</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+        
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* layout */
-        .main-content {
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1200px;   /* 👈 thickness */
-            width: 100%;
-        }
-
-        h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
+        .wishlist-section {
+            padding: 60px 0;
+            min-height: 50vh;
         }
 
         .breadcrumb {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #777;
         }
 
         .breadcrumb a {
-            color: black;
-            text-decoration: underline;
+            color: #222;
+            transition: color 0.3s;
         }
 
-        hr {
-            border: none;
-            height: 1px;
-            background: #ddd;
-            margin: 20px 0;
+        .breadcrumb a:hover {
+            color: #000;
         }
 
-        /* wishlist item */
-        .wishlist-item {
-            /* display: flex; */
+        /* Wishlist Grid matching product-grid */
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            align-items: center;
-            padding: 20px 0;
         }
 
-        .wishlist-item img {
-            width: 250px;
-            height: 300px;
+        @media (max-width: 1024px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Match product-img perfectly to the featured collection */
+        .wishlist-grid .product-img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .wishlist-grid .product-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        .wishlist-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .wishlist-grid .product-img .primary-img {
+            position: relative;
+            z-index: 2;
+            opacity: 1;
         }
 
-        .wishlist-details h3 {
-            font-size: 20px;
+        .wishlist-grid .product-img .hover-img {
+            z-index: 1;
+            opacity: 0;
+            transform: scale(1.2);
         }
 
-        .rating {
-            color: #999;
+        .wishlist-grid .product:hover .product-img .primary-img {
+            opacity: 0;
         }
 
-        .price {
-            font-size: 18px;
-            font-weight: 500;
+        .wishlist-grid .product:hover .product-img .hover-img {
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .remove-btn {
-            width: fit-content;
-            padding: 8px 15px;
-            border: 1px solid black;
-            background: transparent;
+        /* Empty State Styling */
+        .empty-wishlist {
+            text-align: center;
+            padding: 50px 0;
+            display: none; /* Hidden by default */
+        }
+        
+        .empty-wishlist.active {
+            display: block;
+        }
+
+        .empty-wishlist i {
+            font-size: 64px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .empty-wishlist h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        .empty-wishlist p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .empty-wishlist .shop-btn {
+            background-color: #111;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
             cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
         }
 
-        .remove-btn:hover {
-            background: black;
-            color: white;
+        .empty-wishlist .shop-btn:hover {
+            background-color: #333;
         }
+        .wishlist-grid .product p i{
+            color: #9e9e9e;
+            font-size: 13px;
+        }
+        .wishlist-grid .product h3{
+            font-size: 19px;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
     </style>
 </head>
 
@@ -105,40 +168,83 @@
     <!-- HEADER -->
     <div id="header"></div>
 
-    <!-- MAIN -->
-    <div class="main-content">
+    <!-- MAIN WISHLIST SECTION -->
+    <div class="wishlist-section">
         <div class="container">
-
-            <h2>Wishlist</h2>
-
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / Wishlist
+            <h2 class="section-title" style="text-align: left; font-size: 32px; font-family: 'Libre Baskerville', serif; margin-bottom: 10px;">My <i>Wishlist</i></h2>
+            
+            <div class="breadcrumb header-margin">
+                <a href="../index.html">Home</a> / Wishlist
             </div>
 
-            <hr>
+            <!-- Empty State Message -->
+            <div class="empty-wishlist" id="empty-state">
+                <i class="ph ph-heart-break"></i>
+                <h3>Your wishlist is empty</h3>
+                <p>You haven't added any items to your wishlist yet. Explore our products and discover something new.</p>
+                <a href="../index.html"><button class="shop-btn">Continue Shopping</button></a>
+            </div>
 
-            <!-- ITEM -->
-            <div class="wishlist-item">
-                <img src="../assets/images/product-1.webp" alt="">
-
-                <div class="wishlist-details">
-                    <h3>Jade Succulent</h3>
-                    <div class="rating">★ ★ ★ ☆ ☆</div>
-                    <div class="price">$60.00 - $153.00</div>
-                    <button class="remove-btn">Remove</button>
+            <!-- Wishlist Grid -->
+            <div class="wishlist-grid" id="wishlist-grid">
+                
+                <!-- Product Card 1 -->
+                <div class="product" id="wishlist-item-1">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-1.webp" alt="Product 1"></a>
+                        <!-- Hover Buttons -->
+                        <div class="hover-icons">
+                            <button class="remove-from-wishlist" onclick="removeWishlistItem('wishlist-item-1')" title="Remove from Wishlist"><i class="ph ph-x"></i></button>
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                    <p>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                    </p>
+                    <h3>Bought together</h3>
+                    <p>$53</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #000;" data-color="Black"></span>
+                        <span class="color" style="background: #e63946;" data-color="Red"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="wishlist-item">
-                <img src="../assets/images/product-2.webp" alt="">
 
-                <div class="wishlist-details">
+                <!-- Product Card 2 -->
+                <div class="product" id="wishlist-item-2">
+                    <div class="product-img">
+                        <a href="#"><img src="../assets/images/product-2.webp" alt="Product 2"></a>
+                        <!-- Hover Buttons -->
+                        <div class="hover-icons">
+                            <button class="remove-from-wishlist" onclick="removeWishlistItem('wishlist-item-2')" title="Remove from Wishlist"><i class="ph ph-x"></i></button>
+                            <button><i class="fa-solid fa-bag-shopping"></i></button>
+                            <button><i class="fa-solid fa-code-compare"></i></button>
+                            <button><i class="ph ph-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                    <p>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                        <i class="fa-sharp-duotone fa-solid fa-star"></i>
+                    </p>
                     <h3>Jade Succulent</h3>
-                    <div class="rating">★ ★ ★ ☆ ☆</div>
-                    <div class="price">$60.00 - $153.00</div>
-                    <button class="remove-btn">Remove</button>
+                    <p>$60 - $153.00</p>
+                    <div class="color-options">
+                        <span class="color" style="background: #fe81e5;" data-color="Pink"></span>
+                        <span class="color" style="background: #000;" data-color="Black"></span>
+                    </div>
                 </div>
-            </div>
 
+                
+                
+            </div>
         </div>
     </div>
 
@@ -150,8 +256,60 @@
     <script src="../assets/js/include.js"></script>
     <script>
         initIncludes('..');
+
+        // Setup Hover Images strictly mirroring the infinite slider hover swap feature behavior
+        document.addEventListener('DOMContentLoaded', () => {
+            const wishlistProducts = document.querySelectorAll('#wishlist-grid .product');
+            wishlistProducts.forEach((product, i) => {
+                const productImgContainer = product.querySelector('.product-img');
+                const primaryImg = productImgContainer.querySelector('img');
+                
+                if (primaryImg) {
+                    primaryImg.classList.add('primary-img');
+
+                    // Mock the hover image by using the next image in the grid
+                    const nextProduct = wishlistProducts[(i + 1) % wishlistProducts.length];
+                    const nextImgSrc = nextProduct.querySelector('img').src;
+
+                    const hoverImg = document.createElement('img');
+                    hoverImg.src = nextImgSrc;
+                    hoverImg.classList.add('hover-img');
+                    productImgContainer.appendChild(hoverImg);
+                }
+            });
+
+            checkEmptyState();
+        });
+
+        // Wishlist Client Logic
+        function removeWishlistItem(itemId) {
+            const item = document.getElementById(itemId);
+            if (item) {
+                // simple fade out anim for user feedback
+                item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    item.remove();
+                    checkEmptyState();
+                }, 300);
+            }
+        }
+
+        // Display empty state appropriately
+        function checkEmptyState() {
+            const grid = document.getElementById('wishlist-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (grid.querySelectorAll('.product').length === 0) {
+                grid.style.display = 'none';
+                emptyState.classList.add('active');
+            } else {
+                grid.style.display = 'grid';
+                emptyState.classList.remove('active');
+            }
+        }
     </script>
-
 </body>
-
 </html>

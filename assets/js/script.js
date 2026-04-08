@@ -405,9 +405,46 @@ backToTopBtn.addEventListener("click", () => {
 // });
 } // End initApp
 
+// hotspot
+const hotspots = document.querySelectorAll(".hotspot");
+
+    hotspots.forEach(hotspot => {
+        hotspot.addEventListener("click", function (e) {
+            e.stopPropagation();
+
+            // Close all other popups
+            hotspots.forEach(h => {
+                if (h !== hotspot) h.classList.remove("active");
+            });
+
+            // Toggle current
+            hotspot.classList.toggle("active");
+        });
+    });
+
+    // Click outside → close all
+    document.addEventListener("click", () => {
+        hotspots.forEach(h => h.classList.remove("active"));
+    });
+
 document.addEventListener('componentsLoaded', initApp);
 
 // Fallback in case components are omitted or already loaded
 if (document.readyState === 'complete' || (document.getElementById('header') && document.getElementById('header').innerHTML.trim() !== '')) {
     initApp();
 }
+
+// cart Section
+const cartWrapper = document.querySelector('.cart-wrapper');
+
+let timeout;
+
+cartWrapper.addEventListener('mouseleave', () => {
+    timeout = setTimeout(() => {
+        cartWrapper.classList.remove('active');
+    }, 200);
+});
+
+cartWrapper.addEventListener('mouseenter', () => {
+    clearTimeout(timeout);
+});
